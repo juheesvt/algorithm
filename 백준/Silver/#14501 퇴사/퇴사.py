@@ -20,3 +20,31 @@ for today in range(len(schedule)):
 
 
 print(cache[-1])
+
+"""
+이전 코드
+
+import sys
+
+input = sys.stdin.readline
+
+T = 0
+P = 1
+
+schedule = list()
+n = int(input())
+
+for i in range(n):
+    schedule.append(tuple(map(int, input().split())))
+
+# 얼마나 걸리는지, 얼마를 얻었는지  -> 얼마나 걸리는지는 저장 안해도댐
+cache = [[0, 0] for i in range(n)]
+for today, consult in enumerate(schedule):
+    if today + consult[T] < n:
+        if cache[today + consult[T] - 1][P] < consult[P]:
+            cache[today + consult[T] - 1][T] = consult[T] 
+            cache[today + consult[T] - 1][P] += consult[P] + cache[today - consult[T] - 1][P]
+
+print(cache)
+
+"""

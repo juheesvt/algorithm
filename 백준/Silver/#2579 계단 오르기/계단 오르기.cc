@@ -1,6 +1,13 @@
+#include <algorithm>
 #include <iostream>
+#include <string>
+#include <vector>
+#include <climits>
+#include <map>
 
 using namespace std;
+
+const int MAX = 301;
 
 int main() {
 
@@ -8,34 +15,23 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    const int MAX = 300;
-
     int n;
     cin >> n;
-    
-    int stair[301];
-    int cache[301];
 
-    for (int i=0; i<n; i++) {
+    int stair[MAX];
+    int cache[MAX] = {0, };
+
+    for (int i=1; i<=n; i++) {
         cin >> stair[i];
+        // cache[i + 1] = stair[i];
     }
 
-    if (n <= 2) {
-        int sum = 0;
-        for (int i=0; i<n; i++) {
-            sum += stair[i];
-        }
-        cout << sum;
-    } else {
-        cache[0] = stair[0];
-        cache[1] = stair[0] + stair[1];
-
-        for (int i=2; i<n; i++) {
-            cache[i] = max(cache[i-3] + stair[i-1] + stair[i], cache[i-2] + stair[i]);
-        }
-        cout << cache[n - 1];
+    cache[1] = stair[1], cache[2] = stair[1] + stair[2];
+    for (int i=2; i<=n; i++) {
+        // cache[i] = i번째 계단을 밟았을 때 최댓값
+        cache[i] = max(cache[i - 3] + stair[i - 1] + stair[i], cache[i - 2] + stair[i]);
     }
-
+    cout << cache[n];
 
     return 0;
 }

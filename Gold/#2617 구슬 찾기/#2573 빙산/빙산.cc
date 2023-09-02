@@ -103,7 +103,8 @@ int main() {
                 }
             }
         }
-        if (island > 1)        break;
+        if (island > 1)        
+            break;
     }
     cout << answer;
 

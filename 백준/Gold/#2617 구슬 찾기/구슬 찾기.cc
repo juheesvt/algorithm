@@ -12,8 +12,6 @@ int answer = 0;
 int visited[MAX];
 
 int bfs(vector<vector<int>> &graph, int targetNode) {
-
-
     memset(visited, 0, sizeof(visited));
 
     queue<int> q;
@@ -59,7 +57,6 @@ int main() {
 
         if (big > middle || small > middle) answer += 1;
     }
-
     cout << answer;
 
     return 0;

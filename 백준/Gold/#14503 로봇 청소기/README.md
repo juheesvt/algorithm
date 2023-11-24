@@ -1,3 +1,8 @@
+### Comment
+전체적인 구현자체는 금방했으나 ,, 벽과 빈칸 구분을 제대로 안해서 계속 틀렸던 문제 ㅠㅠ  
+기존에는 청소를 진행하면 visit & cleaning 으로 해당 칸을 1로 만들어줬는데 그러면 벽이랑 구분이 안됨 !!  
+빈 칸은 청소해도 후진으로 이동이 가능한 구역이고, 벽은 후진으로 이동이 불가능한 구역인데 요거 처리를 제대로 안해줘서 계속 에러가 났고, 해당 부분을 찾는데 쪼끔 걸림  
+
 # <img width="20px"  src="https://d2gd6pc034wcta.cloudfront.net/tier/11.svg" class="solvedac-tier"> [로봇 청소기](https://www.acmicpc.net/problem/14503) 
 
 | 제출 번호 | 닉네임 | 채점 결과 | 메모리 | 시간 | 언어 | 코드 길이 |

@@ -1,65 +1,76 @@
 #include <algorithm>
 #include <iostream>
-#include <climits>
-#include <vector>
-#include <queue>
 #include <string>
+#include <vector>
+#include <climits>
+#include <queue>
 
 using namespace std;
 
-vector<int> dx = {0, 0, 1, -1};
-vector<int> dy = {1, -1, 0, 0};
+const int MAX = 101;
+int n, m, u, v;
+
+int dx[] = {0, 0, 1, -1};
+int dy[] = {1, -1, 0, 0};
+
+int bfs(vector<vector<int>>& MAP, vector<vector<int>>& visited, int x, int y) {
+
+    queue<pair<int, int>> q;
+    q.push(make_pair(x, y));
+    visited[x][y] = 1;
+
+    int area = 1;
+    while (!q.empty()) {
+        int curX = q.front().first;
+        int curY = q.front().second;
+        q.pop();
+
+        for (int i = 0; i < 4; i++) {
+            int nextX = curX + dx[i];
+            int nextY = curY + dy[i];
+
+            if (nextX < 0 || nextX >= n || nextY < 0 || nextY >= m || MAP[nextX][nextY] == 0 || visited[nextX][nextY]) 
+                continue;
+            q.push(make_pair(nextX, nextY));
+            visited[nextX][nextY] = 1;
+            area += 1; 
+        }
+    }
+    return area;
+}
+
 
 int main() {
 
-    ios::sync_with_stdio(false);
+	ios_base::sync_with_stdio(false);
     cout.tie(nullptr);
     cin.tie(nullptr);
+	
+	cin >> n >> m;
 
-    int r, c;
-    cin >> r >> c;
-
-    vector<vector<int>> painting(r, vector<int>(c, 0));
-    vector<vector<int>> visited(r, vector<int>(c, 0));
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            cin >> painting[i][j];
+	vector<vector<int>> MAP (n, vector<int>(m, 0));
+    vector<vector<int>> visited (n, vector<int>(m, 0));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cin >> MAP[i][j];
         }
     }
 
-    int paintings = 0;
-    int maxPaintings = 0;
-    queue<pair<int, int>> q;
+    int paintingNum = 0;
+    int maxArea = 0;
 
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            if (visited[i][j] == 0 && painting[i][j] == 1) {
-                q.emplace(i, j);
-                visited[i][j] = 1;
-                paintings++;
-
-                int current = 0;
-                while (!q.empty()) {
-                    int x = q.front().first;
-                    int y = q.front().second;
-                    q.pop();
-                    current++;
-
-                    for (int k = 0; k < 4; k++) {
-                        int nx = x + dx[k];
-                        int ny = y + dy[k];
-                        if (0 <= nx && nx < r && 0 <= ny && ny < c && visited[nx][ny] == 0 && painting[nx][ny] == 1) {
-                            q.emplace(nx, ny);
-                            visited[nx][ny] = 1;
-                        }
-                    }
-                    if (current > maxPaintings) {
-                        maxPaintings = current;
-                    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (MAP[i][j] == 1 && visited[i][j] == 0) {
+                paintingNum += 1;
+                int area = bfs(MAP, visited, i, j);
+                if (area > maxArea) {
+                    maxArea = area;
                 }
             }
         }
     }
-    cout << paintings << "\n" << maxPaintings;
+    cout << paintingNum << "\n" << maxArea;
+
     return 0;
 }

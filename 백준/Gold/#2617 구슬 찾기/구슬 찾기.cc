@@ -12,6 +12,8 @@ int answer = 0;
 int visited[MAX];
 
 int bfs(vector<vector<int>> &graph, int targetNode) {
+
+
     memset(visited, 0, sizeof(visited));
 
     queue<int> q;
@@ -46,17 +48,18 @@ int main() {
     for (int i=0; i<m; i++) {
         int u, v;
         cin >> u >> v;
-        in[u].push_back(v); // u가 무거운거
-        out[v].push_back(u); 
+        in[u].push_back(v);
+        out[v].push_back(u);
     }
 
-    int middle = (n - 1) / 2;
+    int middle = (n-1)/2;
     for (int node=1; node<=n; node++) {
         int big = bfs(out, node);    // node 구슬보다 무거운 구슬의 갯수
         int small = bfs(in, node);   // node 구슬보다 가벼운 구슬의 갯수
 
         if (big > middle || small > middle) answer += 1;
     }
+
     cout << answer;
 
     return 0;

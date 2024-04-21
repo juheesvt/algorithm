@@ -1,37 +1,65 @@
+#include <algorithm>
 #include <iostream>
-#include <list>
 #include <string>
+#include <vector>
+#include <climits>
+#include <queue>
+#include <list>
+#include <stack>
+
 using namespace std;
 
-int main(){
-  ios::sync_with_stdio(0);
-  cin.tie(0);
+int main() {
 
-  int t; cin >> t;
+    ios_base::sync_with_stdio(false);
+    cout.tie(nullptr);
+    cin.tie(nullptr);
 
-  while (t--){
-    list<char> lis;
-    list<char>::iterator iter = lis.begin();
-    string s; cin >> s;
+    int t;
+    cin >> t;
 
-    for (auto c : s){
-      if (c == '-'){
-        if (iter != lis.begin())
-          iter = lis.erase(--iter);
-      }
-      else if (c == '<'){
-        if (iter != lis.begin())
-          iter--;
-      }
-      else if (c == '>'){
-        if (iter != lis.end())
-          iter++;
-      }
-      else
-        lis.insert(iter, c);
+    
+    while (t--) {
+        string s;
+        cin >> s;
+
+        stack<char> answer, temp;
+        
+        for (char item : s) {
+            if (item == '<') {
+                if (!answer.empty()) {
+                    temp.push(answer.top());
+                    answer.pop();
+                }
+            } else if (item == '>') {
+                if (!temp.empty()) {
+                    answer.push(temp.top());
+                    temp.pop();
+                }
+            } else if (item == '-') {
+                if (!answer.empty()) {
+                    answer.pop();
+                }
+            } else {
+                answer.push(item);
+            }
+        }
+
+        string result = "";
+
+        while (!answer.empty()) {
+            result += answer.top();
+            answer.pop();
+        }
+        reverse(result.begin(), result.end());
+
+        while (!temp.empty()) {
+            result += temp.top();
+            temp.pop();
+        }
+
+        cout << result;
+        cout << '\n';
     }
-    for (auto a : lis) cout << a;
-    cout << '\n';
-  }
-  return 0;
+    return 0;
 }

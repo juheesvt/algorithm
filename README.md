@@ -10,3 +10,11 @@ This is a auto push repository for Baekjoon Online Judge created with [NKLCBHub]
 |  |
 | ------- |
 | [1894-merge-strings-alternately](https://github.com/juheesvt/algorithm/tree/master/1894-merge-strings-alternately) |
+# Array
+|  |
+| ------- |
+| [0724-find-pivot-index](https://github.com/juheesvt/algorithm/tree/master/0724-find-pivot-index) |
+# Prefix Sum
+|  |
+| ------- |
+| [0724-find-pivot-index](https://github.com/juheesvt/algorithm/tree/master/0724-find-pivot-index) |

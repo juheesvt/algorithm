@@ -1,20 +1,11 @@
-# algorithm
-This is a auto push repository for Baekjoon Online Judge created with [NKLCBHub](https://github.com/Donghyeon0915/NKLCB_Hub).
+# LeetCode
 
+This repository contains my solutions to LeetCode problems.
 
-# Two Pointers
-|  |
-| ------- |
-| [1894-merge-strings-alternately](https://github.com/juheesvt/algorithm/tree/master/1894-merge-strings-alternately) |
-# String
-|  |
-| ------- |
-| [1894-merge-strings-alternately](https://github.com/juheesvt/algorithm/tree/master/1894-merge-strings-alternately) |
-# Array
-|  |
-| ------- |
-| [0724-find-pivot-index](https://github.com/juheesvt/algorithm/tree/master/0724-find-pivot-index) |
-# Prefix Sum
-|  |
-| ------- |
-| [0724-find-pivot-index](https://github.com/juheesvt/algorithm/tree/master/0724-find-pivot-index) |
+Created with :heart: by [LeetPush](https://github.com/husamahmud/LeetPush)
+
+ ## Made by 
+ - Tut: [GitHub](https://github.com/TutTrue) - [LinkedIn](https://www.linkedin.com/in/mahmoud-hamdy-8b6825245/)
+ - Hüsam: [GitHub](https://github.com/husamahmud) - [LinkedIn](https://www.linkedin.com/in/husamahmud/)
+
+ Happy coding! 🚀

@@ -4,7 +4,6 @@ impl Solution {
         let mut max_num = 0;
 
         for element in gain {
-            println!("{current}, {element}");
             current += element;
             if current > max_num {
                 max_num = current;

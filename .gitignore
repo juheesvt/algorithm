@@ -5,3 +5,6 @@ main
 build/
 tempCodeRunnerFile
 tempCodeRunnerFile.cpp
+
+cmake-build-debug/
+CMakeLists.txt
